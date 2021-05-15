@@ -7,14 +7,14 @@
 using namespace std;
 
 //bu fonk satiri diziye atiyor  karakter karakter
-void arrayConv(string input, char* output) {	//okunan satir ve dizinin 0. indeksinin adresi 
-	char a[input.length() + 2];	//okunan satirin 2 fazlasi olacak sekilde dizi tanimladik.bos
-	strcpy(a, input.c_str());	//diziye satiri kopyaladik . a dizisinde artik 1. satir var
-	for(int i = 1; i < input.length() + 1; i++) {	//satir uzunluguna kadar tek tek 
-		output[i] = a[i-1]; //?
+void arrayConv(string input, char* output) {
+	char a[input.length() + 2];	//okunan satirin 2 fazlas (baþtaki null karakteri ve sondaki boþluk için) olacak sekilde dizi tanimladik içeriði boþ
+	strcpy(a, input.c_str());	//diziye satiri kopyaladik. a dizisinde artik girilen satir var
+	for(int i = 1; i < input.length() + 1; i++) {	//satir uzunluguna kadar tek tek bakýyor
+		output[i] = a[i-1]; // birinci endeksten baþlayarak 'output' dizisine 'a' dizisindeki karakterleri ata
 	}
-	output[0] = '\0';	//her satirin basina \0 koyduk.yani \0 artik 0. indeks oldu
-	output[input.length() + 1] = ' ';
+	output[0] = '\0';	//her satirin basina \0 koyduk
+	output[input.length() + 1] = ' '; // Satýr sonuna bir boþlýk karakteri ekle
 }
 
 int varCounter(string line, int startPos) { // line = "char a,b" =>  "a,b"

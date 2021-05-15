@@ -1,0 +1,28 @@
+int main(){
+	
+	int a , m ;
+	int x  , y ;
+	char kelime[20];
+	printf("kelime gir : ");
+	gets(kelime);
+	
+	a = strlen(kelime);
+	for(m = a; m >= 0; m--)
+	{
+		printf("%c",kelime[m]);
+	}
+	return 0;
+}
+
+int main()
+  {
+        FILE  *fptr1,  *fptr2;
+        int lno, linectr = 0;
+        char str [ MAX ] , fname [ MAX];
+        char newln[MAX], temp[] = "temp.txt";
+        fptr1 = fopen(fname, "r");
+        if (!fptr1)
+        {
+                printf("Unable to open the input file!!\n");
+                return 0;
+        }

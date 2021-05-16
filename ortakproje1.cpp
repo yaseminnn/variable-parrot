@@ -3,6 +3,7 @@
 #include<string>
 #include <cstring>
 #include <cctype>	//ozel karakter kontrolu
+#include <algorithm>
 
 using namespace std;
 
@@ -46,26 +47,19 @@ int varCounter(string line, int startPos) { // line = "char a,b" =>  "a,b"
 			spaceCount++;
 		}
 	}
-	char chars[str.length() - spaceCount + 1];
-	int spaceCountOp = 0;
-	int g = 0;
-	for ( int f = 0; f < str.length() + 1; f++) {
-		for (g = g; g < str.length() + 1; g++) {
-			if (charArray[g] != ' ') {
-				chars[g] = charArray[f];
-				break;
-			}
-		}
-	}
-	for(int abc = 0; abc < str.length() - spaceCount; abc++) {
-		cout<<chars[abc];
-	}
 	
+	cout<<"Original String: "<<str<<endl;
+	char chars[str.length() - spaceCount + 1];
+	remove(str.begin(), str.end(), ' ');
+	// arrayConv(str, chars);
+	
+	cout<<"Original String: "<<str<<endl<<endl<<endl<<endl;
+	/*
 	for(int c = 0; c < counter; c++) {
 		for(int j = 0; j <= str.length() + 2; j++) {
-			if(charArray[j] == ',') {
+			if(chars[j] == ',') {
 				output[c] = str.substr(lastCommaPos, j);
-				cout<<str.substr(lastCommaPos, j - 1)<<"  at  "<<lastCommaPos<<endl;
+				// cout<<str.substr(lastCommaPos, j)<<"  at  "<<lastCommaPos<<endl;
 				lastCommaPos = j;
 				break;
 			} else if (charArray[j] == ';') {
@@ -74,6 +68,8 @@ int varCounter(string line, int startPos) { // line = "char a,b" =>  "a,b"
 			}
 		}
 	}
+	*/
+	
 	
 	for(int d = 0 ; d < counter; d++) {
 		// cout<<output[d]<<endl;

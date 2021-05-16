@@ -36,7 +36,50 @@ int varCounter(string line, int startPos) { // line = "char a,b" =>  "a,b"
 			break;
 		}
 	}
-	cout<<endl;
+	
+	string output[counter];
+	int lastCommaPos = 0;
+	
+	int spaceCount = 0;
+	for (int e = 0 ; e < str.length(); e++) {
+		if (charArray[e] == ' ') {
+			spaceCount++;
+		}
+	}
+	char chars[str.length() - spaceCount + 1];
+	int spaceCountOp = 0;
+	int g = 0;
+	for ( int f = 0; f < str.length() + 1; f++) {
+		for (g = g; g < str.length() + 1; g++) {
+			if (charArray[g] != ' ') {
+				chars[g] = charArray[f];
+				break;
+			}
+		}
+	}
+	for(int abc = 0; abc < str.length() - spaceCount; abc++) {
+		cout<<chars[abc];
+	}
+	
+	for(int c = 0; c < counter; c++) {
+		for(int j = 0; j <= str.length() + 2; j++) {
+			if(charArray[j] == ',') {
+				output[c] = str.substr(lastCommaPos, j);
+				cout<<str.substr(lastCommaPos, j - 1)<<"  at  "<<lastCommaPos<<endl;
+				lastCommaPos = j;
+				break;
+			} else if (charArray[j] == ';') {
+				output[c] = str.substr(lastCommaPos, j);
+				break;
+			}
+		}
+	}
+	
+	for(int d = 0 ; d < counter; d++) {
+		// cout<<output[d]<<endl;
+	}
+	
+	
 	return counter;
 }
 
@@ -45,7 +88,7 @@ int main(){
 	int varCount = 0;
 	int lineCount = 0;
 	ifstream dosya;
-	dosya.open("C:\\Users\\Casper\\OneDrive\\Belgeler\\c++\\ortakproje.txt");
+	dosya.open("C:\\Users\\Casper\\OneDrive\\Belgeler\\c++\\proje\\ortakproje.txt");
 	string metin;	//okunacak satirlar icin
 	
 	if(dosya.is_open() == NULL)

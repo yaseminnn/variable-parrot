@@ -1,6 +1,6 @@
 int main(){
 	
-	int a , m ;
+	int asdaasfds , m ;
 	int x  , y ;
 	char kelime[20];
 	printf("kelime gir : ");

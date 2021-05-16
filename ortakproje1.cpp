@@ -31,6 +31,7 @@ int varCounter(string line, int startPos) { // line = "char a,b" =>  "a,b"
 		if(charArray[j] == ',') {
 			cout<<"Comma Found"<<endl;
 			counter++;
+		
 		} else if (charArray[j] == ';') {
 			cout<<"Semi Column Found"<<endl;
 			counter++;
@@ -50,29 +51,43 @@ int varCounter(string line, int startPos) { // line = "char a,b" =>  "a,b"
 	
 	cout<<"Original String: "<<str<<endl;
 	char chars[str.length() - spaceCount + 1];
-	remove(str.begin(), str.end(), ' ');
-	// arrayConv(str, chars);
+	// remove(str.begin(), str.end(), ' ');
+	string outputStr;
+	for(int count = 0; count < str.length() + 1; count++) {
+		if(charArray[count] != ' ') {
+			outputStr += charArray[count];
+		}
+	}
+	arrayConv(outputStr, chars);
 	
-	cout<<"Original String: "<<str<<endl<<endl<<endl<<endl;
-	/*
-	for(int c = 0; c < counter; c++) {
-		for(int j = 0; j <= str.length() + 2; j++) {
-			if(chars[j] == ',') {
-				output[c] = str.substr(lastCommaPos, j);
-				// cout<<str.substr(lastCommaPos, j)<<"  at  "<<lastCommaPos<<endl;
-				lastCommaPos = j;
-				break;
-			} else if (charArray[j] == ';') {
-				output[c] = str.substr(lastCommaPos, j);
-				break;
+	cout<<"String: "<<outputStr<<endl<<endl<<endl<<endl;
+	
+	for(int j = 0; j <= str.length() + 2; j++) {
+		if(chars[j] == ',') {
+			cout<<str.substr(lastCommaPos, j)<<"  at  "<<lastCommaPos<<endl;
+			lastCommaPos = j;
+			for (int outputCount = 0; outputCount < counter; outputCount++) {
+				if(output[outputCount] == "") {
+					output[outputCount] = str.substr(lastCommaPos, j);
+					break;
+				}
+			}
+		} else if (charArray[j] == ';') {
+			cout<<str.substr(lastCommaPos, j)<<"  at  "<<lastCommaPos<<endl;
+			lastCommaPos = j;
+			for (int outputCount = 0; outputCount < counter; outputCount++) {
+				if(output[outputCount] == "") {
+					output[outputCount] = str.substr(lastCommaPos, j);
+					break;
+				}
 			}
 		}
 	}
-	*/
+	
 	
 	
 	for(int d = 0 ; d < counter; d++) {
-		// cout<<output[d]<<endl;
+		cout<<output[d]<<endl;
 	}
 	
 	
